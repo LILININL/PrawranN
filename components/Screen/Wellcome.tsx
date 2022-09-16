@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
-import { View, StyleSheet, Image } from "react-native";
-import { Button, Container, Text, Icon, Box } from "native-base";
+import { StyleSheet, Image } from "react-native";
+import { View, Button, Container, Text, Icon, Box } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
@@ -9,8 +9,8 @@ import { useTranslation } from "react-i18next";
 
 export const Wellcome = ({ navigation }) => {
   const { t, i18n } = useTranslation();
-   // initialize loading
-   const [loading, setLoading] = useState<boolean>(false);
+  // initialize loading
+  const [loading, setLoading] = useState<boolean>(false);
   const logoImage = require("../image/logo.png");
   const onboardImage = require("../image/onboard/onboard.png");
   return (
@@ -23,6 +23,7 @@ export const Wellcome = ({ navigation }) => {
           marginTop: 25,
         }}
       >
+        
         <Box>
           <Image source={logoImage} alt="Plawarn" />
         </Box>
@@ -41,6 +42,7 @@ export const Wellcome = ({ navigation }) => {
           paddingBottom: 0,
         }}
       >
+        {/*  */}
         <Image
           source={onboardImage}
           resizeMode="contain"

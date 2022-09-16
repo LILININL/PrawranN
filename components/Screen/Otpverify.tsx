@@ -31,6 +31,7 @@ import { Line } from "react-native-svg";
 import InputMobileNumber, { ILocaleOption } from "../input/InputMobileNumber";
 import { useForm } from "react-hook-form";
 import AuthOtpInput from "../input/AuthOtpInput";
+import { Platform } from "expo-modules-core";
 
 export const Otpverify = ({ navigation }) => {
   // initialize use transition hook
@@ -104,7 +105,7 @@ export const Otpverify = ({ navigation }) => {
                       setLoading(true);
                       setTimeout(() => {
                         setLoading(true);
-                        navigation.navigate("wellcome");
+                        navigation.navigate("profilename");
                       }, 1000);
                     }}
                   >

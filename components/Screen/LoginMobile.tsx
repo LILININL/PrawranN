@@ -1,7 +1,8 @@
 import React, { Component, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { View, StyleSheet, Image, SafeAreaView } from "react-native";
+import { StyleSheet, Image, SafeAreaView } from "react-native";
 import {
+  View,
   Button,
   Container,
   Text,
@@ -46,10 +47,15 @@ export const LoginMobile = ({ navigation }) => {
   };
    // initialize loading
    const [loading, setLoading] = useState<boolean>(false);
-
+   // initialize input mobile number
+    const [inputMobileNumber, setInputMobileNumber] = useState<string>("");
+    // initialize otp mobile
+    const [otpMobile, setOtpMobile] = useState<string>("");
+//  
   return (
     <>
       <SafeAreaView edges={["bottom", "left", "right"]}>
+        <ScrollView contentContainerStyle={{ height: '100%' }} >
         <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'}></StatusBar>
           <Box height="100%">
             <Button
@@ -156,7 +162,6 @@ export const LoginMobile = ({ navigation }) => {
                 </Button>
               </Box>
             </VStack>
-
             <Center>
               <Text style={{ marginTop: 5 }}>เพิ่งเริ่มใช้ ปลาวาฬ ใช่ไหม</Text>
               <Button
@@ -168,7 +173,7 @@ export const LoginMobile = ({ navigation }) => {
               </Button>
             </Center>
           </Box>
-      
+          </ScrollView>
       </SafeAreaView>
     </>
   );

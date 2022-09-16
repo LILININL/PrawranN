@@ -6,7 +6,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Wellcome } from "../Screen/Wellcome";
 import { LoginMobile } from "../Screen/LoginMobile";
 import { Otpverify } from "../Screen/Otpverify";
-
+import { profilename } from "../Page/profilename";
+import { birthday  } from "../Page/birthdayinput";
+import { Arvatar } from "../Page/Arvatar";
 export default function Nev() {
   const Stack = createNativeStackNavigator();
   return (
@@ -37,6 +39,23 @@ export default function Nev() {
           component={Otpverify}
           options={{ title: "", headerShown: false }}
         />
+        <Stack.Screen 
+          name ="profilename"
+          component={profilename}
+          options={{ title: "สร้างโปรไฟล์", headerShown: true , headerTintColor: '#045EE4',headerTitleAlign: 'center'}}
+        />
+        <Stack.Screen 
+          name ="birthday"
+          component={birthday}
+          options={{ title: "สร้างโปรไฟล์", headerShown: true , headerTintColor: '#045EE4',headerTitleAlign: 'center'}}
+        />
+         <Stack.Screen 
+          name ="Arvatar"
+          component={Arvatar}
+          options={{ title: "สร้างโปรไฟล์", headerShown: true , headerTintColor: '#045EE4',headerTitleAlign: 'center'}}
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
