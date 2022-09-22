@@ -7,18 +7,18 @@ import { Wellcome } from "../Screen/Wellcome";
 import { LoginMobile } from "../Screen/LoginMobile";
 import { Otpverify } from "../Screen/Otpverify";
 import { Profilename } from "../Page/Profilename";
-import { Birthday  } from "../Page/Birthdayinput";
+import { Birthday } from "../Page/Birthdayinput";
 import { Arvatar } from "../Page/Arvatar";
 export default function Nev() {
   const Stack = createNativeStackNavigator();
   return (
+    // headerTitleStyle: {
+    //   fontFamily: "NotoSansThaiSemiBold",
+    //   fontSize: 20,
+    // },
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerTitleStyle: {
-            fontFamily: "NotoSansThaiSemiBold",
-            fontSize: 20,
-          },
           headerBackTitleVisible: false,
           contentStyle: { backgroundColor: "#ffffff" },
         }}
@@ -39,23 +39,36 @@ export default function Nev() {
           component={Otpverify}
           options={{ title: "", headerShown: false }}
         />
-        <Stack.Screen 
-          name ="profilename"
+        <Stack.Screen
+          name="profilename"
           component={Profilename}
-          options={{ title: "สร้างโปรไฟล์", headerShown: true , headerTintColor: '#045EE4',headerTitleAlign: 'center'}}
+          options={{
+            title: "สร้างโปรไฟล์",
+            headerShown: true,
+            headerTintColor: "#045EE4",
+            headerTitleAlign: "center",
+          }}
         />
-        <Stack.Screen 
-          name ="birthday"
+        <Stack.Screen
+          name="birthday"
           component={Birthday}
-          options={{ title: "สร้างโปรไฟล์", headerShown: true , headerTintColor: '#045EE4',headerTitleAlign: 'center'}}
+          options={{
+            title: "สร้างโปรไฟล์",
+            headerShown: true,
+            headerTintColor: "#045EE4",
+            headerTitleAlign: "center",
+          }}
         />
-         <Stack.Screen 
-          name ="Arvatar"
+        <Stack.Screen
+          name="Arvatar"
           component={Arvatar}
-          options={{ title: "สร้างโปรไฟล์", headerShown: true , headerTintColor: '#045EE4',headerTitleAlign: 'center'}}
+          options={{
+            title: "สร้างโปรไฟล์",
+            headerShown: true,
+            headerTintColor: "#045EE4",
+            headerTitleAlign: "center",
+          }}
         />
-
-
       </Stack.Navigator>
     </NavigationContainer>
   );
