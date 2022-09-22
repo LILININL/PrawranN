@@ -6,6 +6,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import LanguageSwitcher from "../languages/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
+import { CallApiAxiso } from "../Api/testAxios";
+import { CallApi } from "../Api/Textcall";
 
 export const Wellcome = ({ navigation }) => {
   const { t, i18n } = useTranslation();

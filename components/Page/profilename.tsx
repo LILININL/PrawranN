@@ -37,7 +37,9 @@ import AuthOtpInput from "../input/AuthOtpInput";
 import { Platform } from "expo-modules-core";
 
 
-export const profilename = ({ navigation }) => {
+export const Profilename = ({ navigation }) => {
+   // initialize use transition hook
+   const { t } = useTranslation();
   // name state
   const [name, onChangename] = React.useState("");
   const [lastname, onChangelastname] = React.useState("");
@@ -58,6 +60,7 @@ export const profilename = ({ navigation }) => {
               px={2}
               pt={5}
             >
+              {/*  */}
               <Box>
                 <Heading
                   fontSize={24}
@@ -77,6 +80,9 @@ export const profilename = ({ navigation }) => {
                       <FormControl.Label>ชื่อ</FormControl.Label>
                       <Input
                         placeholder="ชื่อ"
+                        rules={{
+                          required: t("กรุณากรอกชื่อ"),
+                        }}
                         onChangeText={onChangename}
                         value={name}
                       />
@@ -90,6 +96,9 @@ export const profilename = ({ navigation }) => {
                       <FormControl.Label>นามสกุล</FormControl.Label>
                       <Input
                         placeholder="นามสกุล"
+                        rules={{
+                          required: t("กรุณากรอกนามสกุล"),
+                        }}
                         onChangeText={onChangelastname}
                         value={lastname}
                       />

@@ -21,13 +21,14 @@ export function CallApi({ navigation }) {
         <FlatList
           data={data}
           keyExtractor={({ id }, index) => id}
-          initialParams={{ item: 1 }}
+          
           renderItem={({ item }) => (
             <Text category="h1" style={{ fontSize: 24 ,color: "black" }}>
               Nmae: {item.name}
               {"\n"}
-              Email: {item.phone}
+              Phone: {item.phone}
               {"\n"}
+              {/*  */}
             </Text>
           )}
         /> 

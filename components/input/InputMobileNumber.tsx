@@ -34,6 +34,7 @@ type InputTextGroupProp = {
   rules: any;
   watch?: UseFormWatch<any>;
   onLocaleChange: (locale: ILocaleOption) => void;
+  
 };
 
 function InputMobileNumber({
@@ -49,7 +50,7 @@ function InputMobileNumber({
 }: InputTextGroupProp & IInputProps) {
   // initialize use transition hook
   const { t, i18n } = useTranslation();
-
+ 
   // initialize modal visibility state
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
@@ -94,7 +95,7 @@ function InputMobileNumber({
 
   // initialize locale selected state
   const [localeSelected, setLocaleSelected] = useState<ILocaleOption>(localeList[0]);
-
+    
   useEffect(() => {
     // find current language
     const _localeSelected = localeList.find((item) => item.code === i18n.language);
@@ -119,16 +120,21 @@ function InputMobileNumber({
     (item: ILocaleOption) => {
       setLocaleSelected(item);
       setModalVisible(false);
+      
     },
     [setLocaleSelected, setModalVisible],
+    
   );
-
+  
+ 
+  
   return (
     <Box>
       <Controller
         control={control}
         render={({ field: { onChange, value }, formState: { errors } }) => (
           <FormControl isInvalid={name in errors}>
+            
             {label && <FormControl.Label>{label}</FormControl.Label>}
             <HStack>
               <Button
@@ -148,7 +154,7 @@ function InputMobileNumber({
                 <Input
                   {...rest}
                   placeholder={placeholder}
-                  onChangeText={(val) => onChange(val)}
+                  onChangeText={(val) => onChange(val) }
                   value={value}
                   keyboardType="number-pad"
                   borderTopLeftRadius="none"
@@ -162,6 +168,7 @@ function InputMobileNumber({
             )}
           </FormControl>
         )}
+        
         name={name}
         rules={rules}
       />

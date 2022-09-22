@@ -1,52 +1,21 @@
 import axios from "axios";
-const baseUrl = "ttps://api2.plawarn.com";
+import React, { useState, useEffect } from "react";
+import { View, FlatList, Text, Button } from "react-native";
+import Constants from "expo-constants";
 
-// Passing configuration object to axios
-axios({
-  method: "get",
-  url: `${baseUrl}/users/1`,
-}).then((response) => {
-  console.log(response.data);
-});
-
-// Invoking get method to perform a GET request
-axios.get(`${baseUrl}/users/1`).then((response) => {
-  console.log(response.data);
-});
-
-export function CallApiAxiso({ navigation }) {
-  const baseUrl = "ttps://api2.plawarn.com";
-  // Passing configuration object to axios
-  axios({
-    method: "get",
-    url: `${baseUrl}/users/1`,
-  }).then((response) => {
-    console.log(response.data);
+export function CallApiAxiso({}) {
+  const [isLoading, setLoading] = useState(true); // set loading to true
+  const [data, setData] = useState([]);
+  const baseUrl = "https://api2.plawarn.com";
+  axios.get(`${baseUrl}/users`).then((res) => {
+    // console.log(res.data);
   });
-  console.log(data);
+  
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      {isLoading ? (
-        <Text>Loading ...</Text>
-      ) : (
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <FlatList
-            data={data}
-            keyExtractor={({ id }, index) => id}
-            initialParams={{ item: 1 }}
-            renderItem={({ item }) => (
-              <Text category="h1" style={{ fontSize: 24, color: "black" }}>
-                Nmae: {item.name}
-                {"\n"}
-                Email: {item.phone}
-                {"\n"}
-              </Text>
-            )}
-          />
-        </View>
-      )}
+    <View
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+
+    >
     </View>
   );
 }
