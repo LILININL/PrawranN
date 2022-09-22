@@ -32,12 +32,12 @@ export default function Nev() {
         <Stack.Screen
           name="LoginMobile"
           component={LoginMobile}
-          options={{ title: "", headerShown: false }}
+          options={{ title: "", headerShown: true }}
         />
         <Stack.Screen
           name="Otpverify"
           component={Otpverify}
-          options={{ title: "", headerShown: false }}
+          options={{ title: "", headerShown: true }}
         />
         <Stack.Screen
           name="profilename"

@@ -63,27 +63,15 @@ export const Otpverify = ({ navigation }) => {
         <StatusBar style={Platform.OS === "ios" ? "light" : "auto"}></StatusBar>
         <ScrollView contentContainerStyle={{ height: "100%" }} bounces={false}>
           <Box height="100%">
-            <Button
-              position="absolute"
-              top={5}
-              left={2}
-              px={0}
-              variant="unstyled"
-              onPress={() => navigation.goBack()}
-              zIndex={9}
-            >
-              <UtilFontAwesome icon={faAngleLeft} color="#045EE4" size={24} />
-            </Button>
-
             <Flex
               flexDirection="column"
               flex={1}
               justifyContent="space-between"
               px={2}
-              pt={5}
+              pt={0}
             >
               <Box>
-                <Heading fontSize={24} color="#393F42" mt={60} mb={8}>
+                <Heading fontSize={24} color="#393F42" mt={0} mb={5}>
                   ยืนยันรหัส 6 หลัก
                 </Heading>
                 <Heading fontSize={16} mb={2} >

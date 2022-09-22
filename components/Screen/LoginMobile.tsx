@@ -116,18 +116,6 @@ export const LoginMobile = ({}) => {
             style={Platform.OS === "ios" ? "light" : "auto"}
           ></StatusBar>
           <Box height="100%">
-            <Button
-              position="absolute"
-              top={5}
-              left={2}
-              px={0}
-              variant="unstyled"
-              onPress={() => navigation.goBack()}
-              zIndex={9}
-            >
-              <UtilFontAwesome icon={faAngleLeft} color="#045EE4" size={24} />
-            </Button>
-
             <Flex
               flexDirection="column"
               flex={1}
@@ -136,7 +124,7 @@ export const LoginMobile = ({}) => {
               pt={5}
             >
               <Box>
-                <Heading fontSize={24} mt={60} mb={8}>
+                <Heading fontSize={24} mt={0} mb={5}>
                   ยินดีต้อนรับกลับมา
                 </Heading>
                 <Heading fontSize="xl" mb={2}>
