@@ -1,4 +1,10 @@
-import React, { Component, useState } from "react";
+import React, {
+  Component,
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+} from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, StyleSheet, Image, SafeAreaView } from "react-native";
 import {
@@ -17,36 +23,57 @@ import {
   FormControl,
   WarningOutlineIcon,
 } from "native-base";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import LanguageSwitcher from "../languages/LanguageSwitcher";
-import { useTranslation } from "react-i18next";
-import UtilFontAwesome from "../utils/UtilFontAwesome";
-import {
-  faAngleLeft,
-  faBookAtlas,
-  faFaceAngry,
-} from "@fortawesome/free-solid-svg-icons";
-import { faFaceSmileBeam } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { Line } from "react-native-svg";
-import InputMobileNumber, { ILocaleOption } from "../input/InputMobileNumber";
 import { useForm } from "react-hook-form";
-import AuthOtpInput from "../input/AuthOtpInput";
+import { NavigationContainer } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 import { Platform } from "expo-modules-core";
-
+import { ProfileUpdateDto } from "../profile/dots/profile-update.dto";
+import InputTextGroup from "../input/InputTextGroup";
 
 export const Profilename = ({ navigation }) => {
-   // initialize use transition hook
-   const { t } = useTranslation();
+  // initialize use transition hook
+  const { t } = useTranslation();
   // name state
-  const [name, onChangename] = React.useState("");
-  const [lastname, onChangelastname] = React.useState("");
-  console.log("name", name);
-  console.log("lastname", lastname);
+  // const [name, onChangename] = React.useState("");
+  // const [lastname, onChangelastname] = React.useState("");
+  // console.log("name", name);
+  // console.log("lastname", lastname);
   // initialize loading
   const [loading, setLoading] = useState<boolean>(false);
+  // initialize react-hook-form hook
+  const { control, handleSubmit, reset } = useForm();
+
+  // handle form submit
+  const handleFormSubmit = useCallback(async (payload: ProfileUpdateDto) => {
+    // try catch error
+    try {
+      // log payload
+      console.log(payload);
+
+      // set loading true
+      setLoading(true);
+
+      // initialize profile service
+      const profileService = new ProfileService();
+
+      // update profile
+      const updateProfileResponseData = await profileService.update({
+        firstName: payload.firstName,
+        lastName: payload.lastName,
+      });
+
+      // log updateProfileResponseData
+      console.log("updateProfileResponseData", updateProfileResponseData);
+      // navigate to profile setup birthday
+      navigation.navigate("birthday");
+    } catch (error) {
+      // catch error
+      catchError(error);
+    } finally {
+      // set loading false
+      setLoading(false);
+    }
+  }, []);
   return (
     <>
       <SafeAreaView edges={["bottom", "left", "right"]}>
@@ -78,49 +105,27 @@ export const Profilename = ({ navigation }) => {
                   <Center mb={6} mt={-1}>
                     <FormControl isInvalid w="95%" maxW="343px">
                       <FormControl.Label>ชื่อ</FormControl.Label>
-                      <Input
-                        placeholder="ชื่อ"
+                      <InputTextGroup
+                        name="firstName"
+                        placeholder={t("ชื่อของคุณ")}
+                        control={control}
+                        autoFocus={true}
                         rules={{
-                          required: t("กรุณากรอกชื่อ"),
+                          required: t("กรุณากรอกชื่อของคุณ"),
                         }}
-                        onChangeText={onChangename}
-                        value={name}
                       />
-                      {/* <FormControl.ErrorMessage
-                        leftIcon={<WarningOutlineIcon size="xs" />}
-                      >
-                        กรุณากรอกชื่อ
-                      </FormControl.ErrorMessage> */}
                     </FormControl>
                     <FormControl isInvalid w="95%" maxW="343px">
                       <FormControl.Label>นามสกุล</FormControl.Label>
-                      <Input
-                        placeholder="นามสกุล"
+                      <InputTextGroup
+                        name="lastName"
+                        placeholder={t("นามสกุลของคุณ")}
+                        control={control}
                         rules={{
-                          required: t("กรุณากรอกนามสกุล"),
+                          required: t("กรุณากรอกนามสกุลของคุณ"),
                         }}
-                        onChangeText={onChangelastname}
-                        value={lastname}
                       />
-                      {/* <FormControl.ErrorMessage
-                        leftIcon={<WarningOutlineIcon size="xs" />}
-                      >
-                        กรุณากรอกนามสกุล
-                      </FormControl.ErrorMessage> */}
                     </FormControl>
-                    {/* <Input mb={5}
-                    
-                      size="xl"
-                      placeholder="ชื่อ"
-                      onChangeText={onChangename}
-                      value={name}
-                    />
-                    <Input mb={5}
-                      size="xl"
-                      placeholder="ชื่อ"
-                      onChangeText={onChangename}
-                      value={name}
-                    /> */}
                   </Center>
                 </Box>
               </Box>
@@ -132,13 +137,8 @@ export const Profilename = ({ navigation }) => {
                 width={343}
                 mb={5}
                 colorScheme="orange"
-                onPress={() => {
-                  setLoading(true);
-                  setTimeout(() => {
-                    setLoading(true);
-                    navigation.navigate("birthday");
-                  }, 1000);
-                }}
+                onPress={handleSubmit(handleFormSubmit)}
+                isLoading={loading}
               >
                 ดำเนินการต่อ
               </Button>

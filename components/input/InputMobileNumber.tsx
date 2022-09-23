@@ -134,7 +134,6 @@ function InputMobileNumber({
         control={control}
         render={({ field: { onChange, value }, formState: { errors } }) => (
           <FormControl isInvalid={name in errors}>
-            
             {label && <FormControl.Label>{label}</FormControl.Label>}
             <HStack>
               <Button

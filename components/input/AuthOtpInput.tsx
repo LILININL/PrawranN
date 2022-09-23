@@ -1,5 +1,5 @@
-import { HStack, Input } from 'native-base';
-import React, { useEffect, useState } from 'react';
+import { HStack, Input } from "native-base";
+import React, { useEffect, useState } from "react";
 
 type AuthOtpInputProps = {
   inputCount?: number;
@@ -9,14 +9,23 @@ type AuthOtpInputProps = {
 };
 
 const AuthOtpInput = React.forwardRef(
-  ({ inputCount = 6, inputLength = 1, defaultValue = '', onChange }: AuthOtpInputProps, ref) => {
+  (
+    {
+      inputCount = 6,
+      inputLength = 1,
+      defaultValue = "",
+      onChange,
+    }: AuthOtpInputProps,
+    ref
+  ) => {
     const [otpValue, setOtpValue] = useState<RegExpMatchArray | any>([]);
     const [focusedInput, setFocusedInput] = useState(0);
 
     let inputs: any = [];
 
     useEffect(() => {
-      let otpText = defaultValue.match(new RegExp('.{1,' + inputLength + '}', 'g')) || [];
+      let otpText =
+        defaultValue.match(new RegExp(".{1," + inputLength + "}", "g")) || [];
 
       otpText = otpText.slice(0, inputCount);
 
@@ -29,18 +38,18 @@ const AuthOtpInput = React.forwardRef(
     };
 
     const textChangeHandle = (text: string, i: number) => {
-      console.log('text1', text, i);
+      console.log("text1", text, i);
 
       if (text && !basicValidation(text)) {
         return;
       }
 
-      console.log('text2', text);
+      console.log("text2", text);
 
       otpValue[i] = text;
 
       setOtpValue([...otpValue]);
-      onChange(otpValue.join(''));
+      onChange(otpValue.join(""));
 
       if (text.length === inputLength && i !== inputCount - 1) {
         inputs[i + 1].focus();
@@ -50,7 +59,7 @@ const AuthOtpInput = React.forwardRef(
     const inputFocusHandle = (i: number) => {
       const prevIndex = i - 1;
 
-      if (prevIndex > -1 && !otpValue[prevIndex] && !otpValue.join('')) {
+      if (prevIndex > -1 && !otpValue[prevIndex] && !otpValue.join("")) {
         inputs[prevIndex].focus();
         return;
       }
@@ -59,17 +68,17 @@ const AuthOtpInput = React.forwardRef(
     };
 
     const keyPressHandle = (e: any, i: number) => {
-      const val = otpValue[i] || '';
+      const val = otpValue[i] || "";
 
-      if (e.nativeEvent.key === 'Backspace' && i !== 0 && !val.length) {
+      if (e.nativeEvent.key === "Backspace" && i !== 0 && !val.length) {
         inputs[i - 1].focus();
       }
     };
 
     useEffect(() => {
-      if (defaultValue === '') {
+      if (defaultValue === "") {
         setOtpValue([]);
-        onChange('');
+        onChange("");
 
         if (inputs.length > 0) {
           inputs[0].focus();
@@ -95,14 +104,14 @@ const AuthOtpInput = React.forwardRef(
             keyboardType="number-pad"
             autoFocus={false}
             backgroundColor="white"
-            value={otpValue[i] || ''}
+            value={otpValue[i] || ""}
             maxLength={inputLength}
             onFocus={() => inputFocusHandle(i)}
             onChangeText={(text) => textChangeHandle(text, i)}
             multiline={false}
             variant="filled"
             onKeyPress={(e) => keyPressHandle(e, i)}
-          />,
+          />
         );
       }
 
@@ -110,9 +119,7 @@ const AuthOtpInput = React.forwardRef(
     };
 
     return <HStack space={2}>{render()}</HStack>;
-  },
+  }
 );
 
 export default AuthOtpInput;
-
-
