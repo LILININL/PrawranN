@@ -100,6 +100,7 @@ export const Birthday = ({}) => {
   
   // // initialize auth user
   // const { user } = auth;
+  //
   //  // listen user and set form value
   //  useEffect(() => {
   //   if (user) {

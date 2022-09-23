@@ -6,8 +6,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Wellcome } from "../Screen/Wellcome";
 import { LoginMobile } from "../Screen/LoginMobile";
 import { Otpverify } from "../Screen/Otpverify";
-import { Profilename } from "../Page/ProfileName";
-import { Birthday } from "../Page/BirthdayInput";
+import { Profilename } from "../Page/profilename";
+import { Birthday } from "../Page/birthdayinput";
 import { Avatar } from "../Page/Avatar";
 export default function Nev() {
   const Stack = createNativeStackNavigator();
