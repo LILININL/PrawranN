@@ -6,9 +6,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Wellcome } from "../Screen/Wellcome";
 import { LoginMobile } from "../Screen/LoginMobile";
 import { Otpverify } from "../Screen/Otpverify";
-import { Profilename } from "../Page/Profilename";
-import { Birthday } from "../Page/Birthdayinput";
-import { Arvatar } from "../Page/Arvatar";
+import { Profilename } from "../Page/ProfileName";
+import { Birthday } from "../Page/BirthdayInput";
+import { Avatar } from "../Page/Avatar";
 export default function Nev() {
   const Stack = createNativeStackNavigator();
   return (
@@ -60,8 +60,8 @@ export default function Nev() {
           }}
         />
         <Stack.Screen
-          name="Arvatar"
-          component={Arvatar}
+          name="Avatar"
+          component={Avatar}
           options={{
             title: "สร้างโปรไฟล์",
             headerShown: true,

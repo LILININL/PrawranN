@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 
 import { Platform } from "expo-modules-core";
 
-export const Arvatar = ({}) => {
+export const Avatar = ({}) => {
   // initialize use navigation hook
   const navigation = useNavigation();
   return (
