@@ -8,7 +8,7 @@ import { LoginMobile } from "../Screen/LoginMobile";
 import { Otpverify } from "../Screen/Otpverify";
 import { Profilename } from "../Page/ProfileName";
 import { Birthday } from "../Page/BirthdayInput";
-import { Avatar } from "../Page/Arvatar";
+import { Avatar } from "../Page/Avatar";
 export default function Nev() {
   const Stack = createNativeStackNavigator();
   return (

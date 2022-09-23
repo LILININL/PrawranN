@@ -29,6 +29,7 @@ import { useTranslation } from "react-i18next";
 import { Platform } from "expo-modules-core";
 import { ProfileUpdateDto } from "../profile/dots/profile-update.dto";
 import InputTextGroup from "../input/InputTextGroup";
+import { ProfileService } from "../profile/profile.service";
 
 export const Profilename = ({ navigation }) => {
   // initialize use transition hook
